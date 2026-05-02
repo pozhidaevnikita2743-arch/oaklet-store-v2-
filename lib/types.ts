@@ -20,6 +20,7 @@ export interface Product {
 export type CategorySlug =
   | 'hoodies'
   | 'tshirts'
+  | 'shirts'
   | 'longsleeves'
   | 'headwear'
   | 'accessories'
