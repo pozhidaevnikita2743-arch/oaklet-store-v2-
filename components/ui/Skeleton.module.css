@@ -1,0 +1,43 @@
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 25%,
+    var(--bg-raised) 50%,
+    var(--bg-card) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--r-md);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.image {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r-lg);
+}
+
+.line {
+  height: 14px;
+  border-radius: var(--r-sm);
+}
+
+.lineShort {
+  width: 60%;
+}
+
+.priceLine {
+  height: 20px;
+  width: 40%;
+  border-radius: var(--r-sm);
+}
+
+.btn {
+  height: 40px;
+  border-radius: var(--r-md);
+  margin-top: var(--sp-1);
+}

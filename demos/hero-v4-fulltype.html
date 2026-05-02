@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero V4 — Full-Width Type</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Inter', sans-serif; background: #FAFAF8; }
+a { text-decoration: none; color: inherit; }
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Header */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem);
+  border-bottom: 1px solid rgba(17,17,17,0.07);
+  flex-shrink: 0;
+}
+
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888882;
+}
+
+/* ── Giant type block — fills remaining height */
+.type-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem) 0;
+  position: relative;
+}
+
+/* Each word stretches to fill the container width */
+.word {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  line-height: 0.88;
+  color: #111111;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  display: block;
+  /* make each line touch the edges */
+  font-size: clamp(5rem, 15.5vw, 16rem);
+}
+
+.word-2 {
+  font-style: italic;
+  font-weight: 300;
+  color: #111111;
+  /* slightly offset for rhythm */
+  padding-left: 0.04em;
+}
+
+/* Thin rule between title and bottom */
+.rule {
+  height: 1px;
+  background: rgba(17,17,17,0.08);
+  margin: 1.5rem 0 0;
+}
+
+/* ── Bottom row: copy + CTA */
+.bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem) 2rem;
+  flex-wrap: wrap;
+}
+
+.bottom-left {
+  max-width: 340px;
+}
+
+.eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888882;
+  margin-bottom: 0.625rem;
+}
+
+.sub {
+  font-size: 0.875rem;
+  color: #4A4A46;
+  line-height: 1.65;
+}
+
+.bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.ctas {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: #111111;
+  color: #FAFAF8;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #333; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(17,17,17,0.14);
+  color: #4A4A46;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.bottom-meta {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,17,0.28);
+  display: flex;
+  gap: 0.875rem;
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="top">
+    <div class="brand">OAKLET</div>
+    <div class="top-right">
+      <span>Каталог</span>
+      <span>О бренде</span>
+      <span>Контакты</span>
+    </div>
+  </div>
+
+  <div class="type-block">
+    <span class="word">Для</span>
+    <span class="word word-2">тульских.</span>
+    <div class="rule"></div>
+  </div>
+
+  <div class="bottom">
+    <div class="bottom-left">
+      <div class="eyebrow">Тула · Россия · Streetwear</div>
+      <p class="sub">Одежда, вдохновлённая историей города. Ограниченные тиражи — продажа через ВК и Telegram.</p>
+    </div>
+    <div class="bottom-right">
+      <div class="ctas">
+        <a href="#" class="btn-primary">Каталог →</a>
+        <a href="#" class="btn-secondary">О бренде</a>
+      </div>
+      <div class="bottom-meta">
+        <span>2021</span>
+        <span>·</span>
+        <span>Ограниченные тиражи</span>
+        <span>·</span>
+        <span>Россия</span>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

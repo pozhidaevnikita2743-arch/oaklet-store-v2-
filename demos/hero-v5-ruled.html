@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero V5 — Ruled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Inter', sans-serif; background: #F7F6F2; }
+a { text-decoration: none; color: inherit; }
+
+/* Full-page grid with horizontal ruled lines */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  /* Horizontal ruled lines — like a ledger */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent calc(1 / 12 * 100vh - 1px),
+    rgba(17,17,17,0.055) calc(1 / 12 * 100vh - 1px),
+    rgba(17,17,17,0.055) calc(1 / 12 * 100vh)
+  );
+  background-size: 100% 100vh;
+  background-attachment: local;
+}
+
+/* Vertical margin line on left */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(3rem, 7vw, 5.5rem);
+  width: 1px;
+  background: rgba(17,17,17,0.08);
+  pointer-events: none;
+}
+
+/* ── Navigation row */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem 1.5rem clamp(4rem, 8vw, 6.5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.nav-meta {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888882;
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* ── Main */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem 2rem 2.5rem clamp(4rem, 8vw, 6.5rem);
+  position: relative;
+  z-index: 2;
+}
+
+/* Row number in the margin — like a ledger row */
+.row-num {
+  position: absolute;
+  left: 1rem;
+  bottom: 3.5rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(17,17,17,0.2);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888882;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow-dash {
+  width: 18px;
+  height: 1px;
+  background: #888882;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5.5rem, 14vw, 13rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  color: #111111;
+  margin-bottom: 2rem;
+}
+
+.title-italic {
+  font-style: italic;
+  font-weight: 300;
+  display: block;
+}
+
+/* Content row below title */
+.content-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.sub {
+  font-size: 0.9375rem;
+  color: #4A4A46;
+  line-height: 1.65;
+  max-width: 360px;
+}
+
+.ctas {
+  display: flex;
+  gap: 0.625rem;
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: #111111;
+  color: #F7F6F2;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #333; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(17,17,17,0.14);
+  color: #4A4A46;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+/* Bottom strip */
+.bottom-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem 1rem clamp(4rem, 8vw, 6.5rem);
+  border-top: 1px solid rgba(17,17,17,0.08);
+  position: relative;
+  z-index: 2;
+}
+
+.strip-left {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(17,17,17,0.3);
+  display: flex;
+  gap: 1.25rem;
+}
+
+/* Small scroll hint */
+.scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17,17,17,0.3);
+}
+.scroll-line {
+  width: 20px;
+  height: 1px;
+  background: rgba(17,17,17,0.25);
+}
+
+/* Huge ghost text bottom-right */
+.ghost {
+  position: absolute;
+  right: -0.04em;
+  bottom: -0.1em;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(12rem, 24vw, 26rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(17,17,17,0.06);
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="ghost">OAK</div>
+
+  <nav class="nav">
+    <div class="brand">OAKLET</div>
+    <div class="nav-meta">
+      <span>Каталог</span>
+      <span>О бренде</span>
+      <span>Тула · 2021</span>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="row-num">001</div>
+
+    <div class="eyebrow">
+      <div class="eyebrow-dash"></div>
+      Тула · Streetwear · Russia
+    </div>
+
+    <h1 class="title">
+      Для<br>
+      <span class="title-italic">тульских.</span>
+    </h1>
+
+    <div class="content-row">
+      <p class="sub">
+        Бренд одежды, вдохновлённый историей города. Создан теми, кто вырос здесь. Ограниченные тиражи.
+      </p>
+      <div class="ctas">
+        <a href="#" class="btn-primary">Каталог →</a>
+        <a href="#" class="btn-secondary">О бренде</a>
+      </div>
+    </div>
+  </main>
+
+  <div class="bottom-strip">
+    <div class="strip-left">
+      <span>OAKLET</span>
+      <span>·</span>
+      <span>Since 2021</span>
+      <span>·</span>
+      <span>Ограниченные тиражи</span>
+      <span>·</span>
+      <span>Россия</span>
+    </div>
+    <div class="scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+</section>
+</body>
+</html>

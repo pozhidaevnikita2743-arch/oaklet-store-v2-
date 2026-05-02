@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>История Тулы — таймлайн</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#EDE7DA;
+  --parchment:#F5EED8;
+  --ink:#1C1710;
+  --navy:#1E3A5F;
+  --navy-dim:rgba(30,58,95,0.1);
+  --sienna:#7A4A2A;
+  --forest:#2E5036;
+  --gold:#C9A84C;
+  --gold-dim:rgba(201,168,76,0.12);
+  --muted:#8A7E6E;
+  --border:#C8B89A;
+  --card-bg:#FAF6EF;
+}
+
+html{font-size:16px;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ─── HEADER ─────────────────── */
+.header{
+  padding:28px 48px 20px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  flex-shrink:0;
+  border-bottom:1px solid var(--border);
+  background:var(--parchment);
+}
+.header-left .eyebrow{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.header-left .title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:700;
+  line-height:1;
+  color:var(--ink);
+}
+.header-left .title em{
+  font-style:italic;
+  color:var(--navy);
+}
+
+.header-right{
+  font-size:12px;
+  color:var(--muted);
+  text-align:right;
+  line-height:1.7;
+}
+
+/* ─── TIMELINE WRAP ─────────── */
+.timeline-outer{
+  flex:1;
+  overflow:hidden;
+  position:relative;
+  padding:0;
+  cursor:grab;
+  user-select:none;
+}
+.timeline-outer:active{cursor:grabbing;}
+
+.timeline-scroll{
+  display:flex;
+  align-items:center;
+  height:100%;
+  padding:0 80px;
+  width:max-content;
+  transition:transform 0.06s linear;
+  will-change:transform;
+}
+
+/* ─── BASE LINE ──────────────── */
+.baseline{
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--border) 10%, var(--border) 90%, transparent);
+  transform:translateY(-50%);
+  z-index:1;
+}
+.baseline-fill{
+  position:absolute;
+  top:0;left:0;height:100%;
+  background:var(--gold);
+  width:0%;
+  transition:width 2s ease;
+}
+
+/* ─── EVENT NODE ─────────────── */
+.event{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:240px;
+  flex-shrink:0;
+  cursor:pointer;
+  z-index:10;
+}
+
+/* Alternate above / below baseline */
+.event:nth-child(odd) .event-card{
+  bottom:calc(50% + 36px);
+  top:auto;
+  transform-origin:bottom center;
+}
+.event:nth-child(odd) .event-stem{
+  bottom:calc(50% + 4px);
+  top:auto;
+  flex-direction:column-reverse;
+}
+
+.event:nth-child(even) .event-card{
+  top:calc(50% + 36px);
+  bottom:auto;
+  transform-origin:top center;
+}
+.event:nth-child(even) .event-stem{
+  top:calc(50% + 4px);
+  bottom:auto;
+}
+
+/* Connector line (stem) */
+.event-stem{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:1px;
+  height:0;
+  background:var(--border);
+  transition:height 0.4s ease;
+  z-index:2;
+}
+.event.revealed .event-stem{
+  height:28px;
+}
+
+/* Node dot */
+.event-node{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:20;
+  width:16px;height:16px;
+  border-radius:50%;
+  border:2px solid var(--border);
+  background:var(--parchment);
+  transition:all 0.3s ease;
+  display:flex;align-items:center;justify-content:center;
+}
+.event-node::before{
+  content:'';
+  width:6px;height:6px;border-radius:50%;
+  background:var(--border);
+  transition:background 0.3s;
+}
+.event.revealed .event-node{
+  border-color:var(--navy);
+  background:var(--parchment);
+}
+.event.revealed .event-node::before{
+  background:var(--navy);
+}
+.event.active .event-node{
+  width:24px;height:24px;
+  border-color:var(--gold);
+  background:var(--gold);
+  box-shadow:0 0 0 6px var(--gold-dim);
+}
+.event.active .event-node::before{
+  background:white;
+  width:8px;height:8px;
+}
+
+/* Year label on node */
+.event-year-line{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, 14px);
+  font-family:'Playfair Display',serif;
+  font-size:12px;
+  font-weight:700;
+  color:var(--muted);
+  white-space:nowrap;
+  z-index:20;
+  transition:color 0.3s;
+  opacity:0;
+}
+.event.revealed .event-year-line{opacity:1;}
+.event.active .event-year-line{color:var(--navy);}
+
+/* Card */
+.event-card{
+  position:absolute;
+  width:200px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:14px 16px;
+  opacity:0;
+  transform:scale(0.88);
+  transition:opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s, border-color 0.3s;
+  pointer-events:none;
+  box-shadow:0 4px 16px rgba(28,23,16,0.06);
+}
+.event.revealed .event-card{
+  opacity:1;
+  transform:scale(1);
+  pointer-events:all;
+}
+.event.active .event-card{
+  border-color:var(--gold);
+  box-shadow:0 8px 32px rgba(201,168,76,0.18), 0 4px 16px rgba(28,23,16,0.1);
+  z-index:30;
+}
+
+.card-year{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:700;
+  color:var(--navy);
+  line-height:1;
+  margin-bottom:6px;
+}
+.event.active .card-year{color:var(--gold);}
+
+.card-title{
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.3;
+  margin-bottom:6px;
+}
+.card-desc{
+  font-size:11px;
+  line-height:1.6;
+  color:var(--muted);
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease, opacity 0.4s ease;
+  opacity:0;
+}
+.event.active .card-desc{
+  max-height:120px;
+  opacity:1;
+}
+.card-tag{
+  display:inline-block;
+  margin-top:8px;
+  padding:3px 8px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--navy);
+  background:var(--navy-dim);
+  border-radius:2px;
+  opacity:0;
+  transition:opacity 0.3s ease 0.2s;
+}
+.event.active .card-tag{opacity:1;}
+
+/* ─── BOTTOM BAR ─────────────── */
+.bottom-bar{
+  flex-shrink:0;
+  padding:14px 48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-top:1px solid var(--border);
+  background:var(--parchment);
+}
+.nav-btns{
+  display:flex;
+  gap:10px;
+}
+.nav-btn{
+  width:36px;height:36px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  color:var(--muted);
+  font-size:16px;
+  transition:all 0.2s;
+  background:transparent;
+  font-family:'Inter',sans-serif;
+}
+.nav-btn:hover{border-color:var(--navy);color:var(--navy);background:var(--navy-dim);}
+
+.event-counter{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:0.08em;
+}
+.event-counter strong{
+  color:var(--navy);
+  font-weight:600;
+}
+
+.keyboard-hint{
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:0.06em;
+}
+.kbd{
+  display:inline-block;
+  padding:1px 6px;
+  border:1px solid var(--border);
+  border-radius:3px;
+  font-family:monospace;
+  font-size:10px;
+  background:var(--bg);
+}
+
+/* ─── INTRO ANIMATION ─────────── */
+@keyframes fadeSlideUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.header{animation:fadeSlideUp 0.6s ease both;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="eyebrow">Oaklet · Тула с 1146 года</div>
+    <h1 class="title">История <em>Тулы</em></h1>
+  </div>
+  <div class="header-right">
+    Нажмите на событие<br>чтобы узнать подробности
+  </div>
+</div>
+
+<div class="timeline-outer" id="timelineOuter">
+  <div class="baseline">
+    <div class="baseline-fill" id="baselineFill"></div>
+  </div>
+  <div class="timeline-scroll" id="timelineScroll">
+    <!-- Events generated by JS -->
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="nav-btns">
+    <button class="nav-btn" id="prevBtn">←</button>
+    <button class="nav-btn" id="nextBtn">→</button>
+  </div>
+  <div class="event-counter">
+    Событие <strong id="counterCurrent">1</strong> из <strong id="counterTotal">-</strong>
+  </div>
+  <div class="keyboard-hint">
+    <span class="kbd">←</span> <span class="kbd">→</span> для навигации
+  </div>
+</div>
+
+<script>
+const EVENTS = [
+  {
+    year: 1146,
+    title: 'Первое упоминание',
+    desc: 'Тула впервые упоминается в Никоновской летописи. Один из древнейших городов центральной России.',
+    tag: 'Основание',
+    color: '#1E3A5F'
+  },
+  {
+    year: 1380,
+    title: 'Куликовская битва',
+    desc: 'В 80 км от Тулы произошло решающее сражение русских дружин с ордой Мамая. Тульские ополченцы участвовали в битве.',
+    tag: 'Ратная история',
+    color: '#7A2A2A'
+  },
+  {
+    year: 1520,
+    title: 'Строительство кремля',
+    desc: 'По указу Василия III возведены белокаменные стены Тульского кремля. Один из лучших сохранившихся кремлей России.',
+    tag: 'Архитектура',
+    color: '#1E3A5F'
+  },
+  {
+    year: 1712,
+    title: 'Указ Петра I',
+    desc: 'Пётр I подписал указ об основании Тульского оружейного завода. С этого момента Тула стала оружейной столицей России.',
+    tag: 'Промышленность',
+    color: '#5A3A1A'
+  },
+  {
+    year: 1778,
+    title: 'Первый самовар',
+    desc: 'Братья Лисицыны открыли первую самоварную мастерскую в Туле. Вскоре город стал мировым центром самоварного производства.',
+    tag: 'Ремесло',
+    color: '#C9A84C'
+  },
+  {
+    year: 1778,
+    title: 'Губернский город',
+    desc: 'Тула получила статус центра Тульской губернии по реформе Екатерины II.',
+    tag: 'Управление',
+    color: '#2E5036'
+  },
+  {
+    year: 1883,
+    title: 'Открытие музея',
+    desc: 'Основан первый тульский краеведческий музей. Хранит тысячи предметов истории города.',
+    tag: 'Культура',
+    color: '#2E5036'
+  },
+  {
+    year: 1910,
+    title: 'Смерть Толстого',
+    desc: 'Лев Николаевич Толстой скончался на станции Астапово. Ясная Поляна — его усадьба в 14 км от Тулы — стала местом паломничества.',
+    tag: 'Литература',
+    color: '#1E3A5F'
+  },
+  {
+    year: 1941,
+    title: 'Оборона Тулы',
+    desc: 'Осень — зима 1941 года. Тула выстояла в осаде немецких войск. Рабочие заводов воевали в народном ополчении.',
+    tag: 'Великая война',
+    color: '#7A2A2A'
+  },
+  {
+    year: 1976,
+    title: 'Город-герой',
+    desc: 'Тула удостоена звания «Город-герой» за стойкость в годы Великой Отечественной войны.',
+    tag: 'Награда',
+    color: '#C9A84C'
+  },
+  {
+    year: 2001,
+    title: 'Музей оружия',
+    desc: 'Открылся новый корпус Тульского государственного музея оружия — один из крупнейших в мире. «Шлем» на берегу Упы.',
+    tag: 'Современность',
+    color: '#2E5036'
+  },
+  {
+    year: 2021,
+    title: 'Основание OAKLET',
+    desc: 'Тульский бренд одежды OAKLET начал работу. Вдохновлённый историей города — для тех, кто любит Тулу.',
+    tag: 'Наш бренд',
+    color: '#C9A84C',
+    special: true
+  }
+];
+
+const scroll = document.getElementById('timelineScroll');
+const outer = document.getElementById('timelineOuter');
+const fill = document.getElementById('baselineFill');
+const counterCurrent = document.getElementById('counterCurrent');
+const counterTotal = document.getElementById('counterTotal');
+
+let activeIdx = -1;
+let revealedCount = 0;
+
+counterTotal.textContent = EVENTS.length;
+
+// Build event nodes
+const eventEls = EVENTS.map((ev, i) => {
+  const el = document.createElement('div');
+  el.className = 'event';
+  el.innerHTML = `
+    <div class="event-stem"></div>
+    <div class="event-node"></div>
+    <div class="event-year-line">${ev.year}</div>
+    <div class="event-card">
+      <div class="card-year">${ev.year}</div>
+      <div class="card-title">${ev.title}</div>
+      <div class="card-desc">${ev.desc}</div>
+      <div class="card-tag">${ev.tag}</div>
+    </div>
+  `;
+  el.addEventListener('click', () => setActive(i));
+  scroll.appendChild(el);
+  return el;
+});
+
+function setActive(idx) {
+  if (activeIdx >= 0) eventEls[activeIdx].classList.remove('active');
+  activeIdx = idx;
+  eventEls[idx].classList.add('active');
+  counterCurrent.textContent = idx + 1;
+  scrollToEvent(idx);
+}
+
+function scrollToEvent(idx) {
+  const el = eventEls[idx];
+  const elLeft = el.offsetLeft + el.offsetWidth / 2;
+  const centerX = outer.clientWidth / 2;
+  const target = elLeft - centerX;
+  smoothScrollTo(target);
+}
+
+let currentScrollX = 0;
+let targetScrollX = 0;
+let isAnimating = false;
+
+function smoothScrollTo(x) {
+  const maxScroll = scroll.scrollWidth - outer.clientWidth;
+  targetScrollX = Math.max(0, Math.min(x, maxScroll));
+  if (!isAnimating) animateScroll();
+}
+
+function animateScroll() {
+  isAnimating = true;
+  const diff = targetScrollX - currentScrollX;
+  if (Math.abs(diff) < 0.5) {
+    currentScrollX = targetScrollX;
+    scroll.style.transform = `translateX(${-currentScrollX}px)`;
+    isAnimating = false;
+    return;
+  }
+  currentScrollX += diff * 0.1;
+  scroll.style.transform = `translateX(${-currentScrollX}px)`;
+  requestAnimationFrame(animateScroll);
+}
+
+// Reveal events progressively with timeline fill
+function revealEvents() {
+  if (revealedCount >= EVENTS.length) return;
+  const el = eventEls[revealedCount];
+  el.classList.add('revealed');
+  revealedCount++;
+
+  // Update baseline fill
+  const pct = (revealedCount / EVENTS.length) * 100;
+  fill.style.width = pct + '%';
+
+  if (revealedCount < EVENTS.length) {
+    setTimeout(revealEvents, 200);
+  } else {
+    // Auto-select OAKLET event
+    setTimeout(() => setActive(EVENTS.length - 1), 400);
+  }
+}
+
+setTimeout(revealEvents, 600);
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    const next = Math.min(activeIdx + 1, EVENTS.length - 1);
+    if (eventEls[next].classList.contains('revealed')) setActive(next);
+  }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    const prev = Math.max(activeIdx - 1, 0);
+    setActive(prev);
+  }
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  const next = Math.min(activeIdx + 1, EVENTS.length - 1);
+  if (eventEls[next].classList.contains('revealed')) setActive(next);
+});
+document.getElementById('prevBtn').addEventListener('click', () => {
+  const prev = Math.max(activeIdx - 1, 0);
+  setActive(prev);
+});
+
+// Mouse drag to scroll
+let isDragging = false;
+let dragStartX = 0;
+let dragStartScroll = 0;
+
+outer.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  dragStartX = e.clientX;
+  dragStartScroll = currentScrollX;
+  outer.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const dx = dragStartX - e.clientX;
+  targetScrollX = dragStartScroll + dx;
+  currentScrollX = targetScrollX;
+  const maxScroll = scroll.scrollWidth - outer.clientWidth;
+  currentScrollX = Math.max(0, Math.min(currentScrollX, maxScroll));
+  targetScrollX = currentScrollX;
+  scroll.style.transform = `translateX(${-currentScrollX}px)`;
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+  outer.style.cursor = 'grab';
+});
+
+// Mouse wheel scroll (horizontal)
+outer.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const delta = e.deltaX || e.deltaY;
+  const maxScroll = scroll.scrollWidth - outer.clientWidth;
+  targetScrollX = Math.max(0, Math.min(currentScrollX + delta * 2, maxScroll));
+  if (!isAnimating) animateScroll();
+}, { passive: false });
+</script>
+</body>
+</html>

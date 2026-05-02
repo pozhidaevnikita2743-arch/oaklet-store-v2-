@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OAKLET — Оригинальная версия (тёмная)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: #0A0A0A; color: #F0EDE6; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+:root {
+  --brand:        #C47B3A;
+  --brand-hover:  #D4894A;
+  --brand-dim:    rgba(196,123,58,0.12);
+  --bg-base:      #0A0A0A;
+  --bg-elevated:  #111110;
+  --bg-card:      #1A1A18;
+  --bg-raised:    #222220;
+  --text-primary: #F0EDE6;
+  --text-secondary:#9A9892;
+  --text-muted:   #555550;
+  --border:       rgba(240,237,230,0.08);
+  --border-subtle:rgba(240,237,230,0.05);
+  --pad-x: clamp(1rem, 4vw, 2rem);
+  --max-w: 1280px;
+  --header-h: 64px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-full: 9999px;
+}
+
+.container { width: 100%; max-width: var(--max-w); margin-inline: auto; padding-inline: var(--pad-x); }
+
+/* ── HEADER */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--header-h);
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+
+.logo { display: flex; align-items: baseline; gap: 6px; }
+.logo-mark { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.12em; }
+.logo-tag { font-size: 0.625rem; font-weight: 600; color: var(--brand); letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 6px; border: 1px solid var(--brand); border-radius: 4px; }
+
+.nav { display: flex; align-items: center; gap: 1.5rem; }
+.nav-link { font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.15s; }
+.nav-link:hover { color: var(--text-primary); }
+
+.header-actions { display: flex; align-items: center; gap: 0.5rem; }
+.icon-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: var(--r-md); color: var(--text-secondary); transition: color 0.15s, background 0.15s; }
+.icon-btn:hover { color: var(--text-primary); background: var(--bg-raised); }
+
+/* ── HERO */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+.hero-bg { position: absolute; inset: 0; background: var(--bg-base); }
+
+/* Grid lines */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(196,123,58,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,123,58,0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+/* Orange glow bottom-left */
+.hero-glow {
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(196,123,58,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 2; animation: slideUp 0.8s ease both; }
+
+.hero-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--brand); }
+
+.hero-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(5rem, 14vw, 13rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+.hero-title-accent { color: var(--brand); display: block; }
+
+.hero-sub {
+  font-size: clamp(0.9375rem, 1.6vw, 1.125rem);
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.cta-primary {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--brand); color: #0A0A0A;
+  border-radius: var(--r-md);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.0625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+  transition: background 0.15s, transform 0.15s;
+}
+.cta-primary:hover { background: var(--brand-hover); transform: translateY(-2px); }
+
+.cta-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 1rem 2rem;
+  border: 1px solid var(--border); color: var(--text-secondary);
+  border-radius: var(--r-md);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.0625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+  transition: color 0.15s, border-color 0.15s;
+}
+.cta-secondary:hover { color: var(--text-primary); border-color: var(--text-secondary); }
+
+.scroll-hint {
+  position: absolute; bottom: 2rem; right: var(--pad-x);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: var(--text-muted); font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--brand), transparent); }
+
+/* ── FEATURES BAR */
+.feat-bar {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1.25rem 0;
+  background: var(--bg-elevated);
+}
+.feat-bar-inner { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; }
+.feat-item { display: flex; align-items: center; gap: 0.75rem; }
+.feat-icon { font-size: 1.25rem; line-height: 1; }
+.feat-text { font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary); white-space: nowrap; }
+
+/* ── MANIFESTO */
+.manifesto {
+  padding: 5rem 0;
+  background: var(--brand-dim);
+  border-top: 1px solid rgba(196,123,58,0.15);
+  border-bottom: 1px solid rgba(196,123,58,0.15);
+  text-align: center;
+}
+.manifesto-text {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  line-height: 1.15;
+  max-width: 900px;
+  margin-inline: auto;
+}
+.manifesto-accent { color: var(--brand); }
+
+/* ── SECTION */
+.section { padding: 5rem 0; }
+
+.section-eyebrow {
+  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--brand); margin-bottom: 0.5rem;
+}
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; gap: 1rem; flex-wrap: wrap; }
+.section-title { font-family: 'Oswald', sans-serif; font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-primary); line-height: 1; }
+.section-link { font-size: 0.8125rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 0.5rem; transition: color 0.15s; }
+.section-link:hover { color: var(--brand); }
+
+/* ── PRODUCT GRID */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+
+.product-card {
+  background: var(--bg-card);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.product-card:hover { border-color: var(--border); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+
+.product-image {
+  aspect-ratio: 3/4;
+  background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.1em;
+}
+
+.product-body { padding: 1rem; }
+.product-name { font-size: 0.8125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
+.product-price { font-family: 'Oswald', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--text-primary); }
+
+.add-btn {
+  width: 100%; margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: var(--brand); color: #0A0A0A;
+  border-radius: var(--r-md);
+  font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.add-btn:hover { background: var(--brand-hover); }
+
+/* ── STORY */
+.story {
+  padding: 6rem 0;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.story-year {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(6rem, 16vw, 14rem);
+  font-weight: 700; line-height: 1; letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(196,123,58,0.2);
+  user-select: none;
+}
+.story-eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand); margin-bottom: 1rem; }
+.story-title { font-family: 'Oswald', sans-serif; font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-primary); margin-bottom: 1.5rem; line-height: 1.05; }
+.story-text { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.25rem; }
+
+.story-values { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+.story-value { display: flex; flex-direction: column; gap: 0.25rem; }
+.story-value-num { font-family: 'Oswald', sans-serif; font-size: 2.25rem; font-weight: 700; color: var(--brand); line-height: 1; }
+.story-value-label { font-size: 0.625rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ── HOW TO BUY */
+.how-to { padding: 5rem 0; }
+.how-to-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+.how-to-card {
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  display: flex; flex-direction: column; gap: 1rem;
+  text-decoration: none; color: inherit;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+.how-to-card:hover { border-color: var(--brand); background: var(--bg-elevated); transform: translateY(-2px); }
+.how-to-icon { width: 56px; height: 56px; background: var(--bg-raised); border-radius: var(--r-lg); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); }
+.how-to-title { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-primary); }
+.how-to-desc { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.65; }
+.how-to-arrow { margin-top: auto; font-size: 0.8125rem; font-weight: 600; color: var(--brand); text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: center; gap: 0.5rem; }
+
+/* ── FOOTER */
+.footer { border-top: 1px solid var(--border); background: var(--bg-elevated); padding: 4rem 0 1.5rem; }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+.footer-brand-name { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.75rem; }
+.footer-brand-desc { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.7; max-width: 220px; }
+.footer-col-title { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1rem; }
+.footer-col-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-col-link { font-size: 0.8125rem; color: var(--text-secondary); transition: color 0.15s; }
+.footer-col-link:hover { color: var(--text-primary); }
+.footer-bottom { border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-size: 0.8125rem; color: var(--text-muted); }
+.footer-city { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); }
+
+@keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">OAKLET</span>
+      <span class="logo-tag">Тула</span>
+    </a>
+    <nav class="nav">
+      <a href="#" class="nav-link">Каталог</a>
+      <a href="#" class="nav-link">О бренде</a>
+      <a href="#" class="nav-link">Контакты</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" title="Поиск">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" title="Корзина">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Тула · 2021</div>
+    <h1 class="hero-title">
+      Для<br>
+      <span class="hero-title-accent">тульских.</span>
+    </h1>
+    <p class="hero-sub">
+      Бренд одежды, вдохновлённый историей города. Создан теми, кто вырос здесь. Для тех, кто ценит свободу и творчество.
+    </p>
+    <div class="hero-ctas">
+      <a href="#" class="cta-primary">
+        Смотреть каталог
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#" class="cta-secondary">О бренде</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- FEATURES BAR -->
+<div class="feat-bar">
+  <div class="container feat-bar-inner">
+    <div class="feat-item"><span class="feat-icon">🏙</span><span class="feat-text">Сделано в Туле</span></div>
+    <div class="feat-item"><span class="feat-icon">✦</span><span class="feat-text">Ограниченные тиражи</span></div>
+    <div class="feat-item"><span class="feat-icon">🤝</span><span class="feat-text">Продажа через ВК и Telegram</span></div>
+    <div class="feat-item"><span class="feat-icon">📦</span><span class="feat-text">Доставка по России</span></div>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="container">
+    <p class="manifesto-text">
+      Не просто одежда — это <span class="manifesto-accent">позиция.</span><br>
+      Тульская история. Молодёжный взгляд.
+    </p>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Избранное</div>
+        <h2 class="section-title">Хиты и новинки</h2>
+      </div>
+      <a href="#" class="section-link">Весь каталог →</a>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-image">Фото товара</div>
+        <div class="product-body">
+          <div class="product-name">Худи OAKLET Classic</div>
+          <div class="product-price">3 500 ₽</div>
+          <button class="add-btn">В корзину</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">Фото товара</div>
+        <div class="product-body">
+          <div class="product-name">Футболка ТУЛА</div>
+          <div class="product-price">1 900 ₽</div>
+          <button class="add-btn">В корзину</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">Фото товара</div>
+        <div class="product-body">
+          <div class="product-name">Свитшот Левша</div>
+          <div class="product-price">2 800 ₽</div>
+          <button class="add-btn">В корзину</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">Фото товара</div>
+        <div class="product-body">
+          <div class="product-name">Кепка OAKLET</div>
+          <div class="product-price">1 400 ₽</div>
+          <button class="add-btn">В корзину</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-year">1146</div>
+      <div>
+        <div class="story-eyebrow">О бренде</div>
+        <h2 class="story-title">Тула<br>в каждом<br>стежке</h2>
+        <p class="story-text">OAKLET начался как идея — делать вещи, которые говорят о городе без пафоса. Тула не нуждается в представлении: самовары, пряники, «Левша», Куликово поле.</p>
+        <p class="story-text">Один шоурум в центре города, потом — коллаборации с тульскими барами и пространством «Искра».</p>
+        <div class="story-values">
+          <div class="story-value"><span class="story-value-num">2021</span><span class="story-value-label">Год основания</span></div>
+          <div class="story-value"><span class="story-value-num">12+</span><span class="story-value-label">Позиций</span></div>
+          <div class="story-value"><span class="story-value-num">100%</span><span class="story-value-label">Тула</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO BUY -->
+<section class="how-to">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Покупка</div>
+        <h2 class="section-title">Как купить</h2>
+      </div>
+    </div>
+    <div class="how-to-cards">
+      <a href="https://vk.ru/oaklet_store" target="_blank" class="how-to-card">
+        <div class="how-to-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.3h-1.54c-.58 0-.76-.46-1.81-1.52-.91-.88-1.31-.99-1.54-.99-.31 0-.4.09-.4.52v1.39c0 .37-.12.59-1.11.59-1.64 0-3.45-.99-4.72-2.83C5.5 10.19 5.09 8.55 5.09 8.2c0-.23.09-.44.52-.44h1.54c.38 0 .53.17.68.59.75 2.16 2 4.07 2.52 4.07.19 0 .28-.09.28-.58V9.82c-.06-1.06-.62-1.15-.62-1.53 0-.18.15-.37.38-.37h2.42c.32 0 .43.17.43.55v2.97c0 .32.14.43.23.43.19 0 .35-.11.7-.46 1.08-1.21 1.85-3.07 1.85-3.07.1-.23.31-.44.69-.44h1.54c.46 0 .56.23.46.55-.19.88-2.04 3.5-2.04 3.5-.16.26-.22.38 0 .67.16.22.68.67 1.02 1.07.64.73 1.13 1.34 1.26 1.76.11.41-.1.62-.52.62z"/></svg>
+        </div>
+        <div class="how-to-title">ВКонтакте</div>
+        <p class="how-to-desc">Напишите нам в ВК — выберите вещь из каталога, укажите размер. Ответим в течение дня.</p>
+        <div class="how-to-arrow">Перейти в ВК →</div>
+      </a>
+      <a href="https://t.me/oaklet_store" target="_blank" class="how-to-card">
+        <div class="how-to-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.69 7.97c-.12.56-.46.7-.93.43l-2.59-1.91-1.25 1.2c-.14.14-.25.25-.51.25l.18-2.59 4.67-4.22c.2-.18-.05-.28-.31-.1L7.23 14.49 4.68 13.7c-.55-.17-.56-.55.12-.81l8.98-3.46c.46-.17.86.1.71.81z"/></svg>
+        </div>
+        <div class="how-to-title">Telegram</div>
+        <p class="how-to-desc">Пишите в Telegram — это удобнее всего. Покажем наличие, поможем с размером.</p>
+        <div class="how-to-arrow">Написать в TG →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">OAKLET</div>
+        <p class="footer-brand-desc">Тульский уличный бренд. Создан в 2021 году.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Магазин</div>
+        <div class="footer-col-links">
+          <a href="#" class="footer-col-link">Каталог</a>
+          <a href="#" class="footer-col-link">Новинки</a>
+          <a href="#" class="footer-col-link">Хиты продаж</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Бренд</div>
+        <div class="footer-col-links">
+          <a href="#" class="footer-col-link">О нас</a>
+          <a href="#" class="footer-col-link">Как купить</a>
+          <a href="#" class="footer-col-link">Доставка</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Соцсети</div>
+        <div class="footer-col-links">
+          <a href="#" class="footer-col-link">ВКонтакте</a>
+          <a href="#" class="footer-col-link">Telegram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2021–2025 OAKLET</span>
+      <span class="footer-city">Тула, Россия</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

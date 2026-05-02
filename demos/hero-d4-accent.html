@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark V4 — Orange Accent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Inter', sans-serif; background: #0A0A0A; color: #F0EDE6; }
+a { text-decoration: none; color: inherit; }
+
+/* Orange accent bar at the very top — brand signature */
+.top-accent {
+  height: 3px;
+  background: linear-gradient(to right, #C47B3A 0%, #D4894A 40%, rgba(196,123,58,0.2) 100%);
+}
+
+.hero {
+  min-height: calc(100svh - 3px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid of vertical lines — dark, barely visible */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(240,237,230,0.02) 0px,
+    rgba(240,237,230,0.02) 1px,
+    transparent 1px,
+    transparent 120px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+  border-bottom: 1px solid rgba(240,237,230,0.06);
+}
+
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #F0EDE6;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.35);
+}
+
+/* Hero body */
+.body {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 clamp(1.5rem, 5vw, 3.5rem) 0;
+  position: relative;
+  z-index: 2;
+}
+
+.body-inner {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  padding-bottom: 0;
+}
+
+/* Left: title */
+.title-col {}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(196,123,58,0.8);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: #C47B3A;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 10vw, 10rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  color: #F0EDE6;
+}
+
+/* Only "тульских." gets the orange */
+.title-word-orange {
+  color: #C47B3A;
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Right: info */
+.info-col {
+  padding-bottom: 0.25em;
+}
+
+.info-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.25);
+  margin-bottom: 0.75rem;
+}
+
+.sub {
+  font-size: 0.9375rem;
+  color: rgba(240,237,230,0.5);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: #C47B3A;
+  color: #0A0A0A;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: background 0.15s;
+  width: fit-content;
+}
+.btn-primary:hover { background: #D4894A; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 2rem;
+  border: 1px solid rgba(240,237,230,0.1);
+  color: rgba(240,237,230,0.4);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+/* Bottom bar */
+.bottom-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid rgba(240,237,230,0.06);
+  margin-top: 2.5rem;
+}
+
+.bottom-cell {
+  flex: 1;
+  padding: 1.25rem clamp(1.5rem, 5vw, 3.5rem);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.2);
+  border-right: 1px solid rgba(240,237,230,0.06);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.bottom-cell:last-child { border-right: none; }
+
+.cell-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(196,123,58,0.5);
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+<!-- Orange signature bar at the top -->
+<div class="top-accent"></div>
+
+<section class="hero">
+  <header class="header">
+    <div class="brand">OAKLET</div>
+    <div class="header-right">
+      <span>Каталог</span>
+      <span>О бренде</span>
+      <span>Контакты</span>
+    </div>
+  </header>
+
+  <div class="body">
+    <div class="body-inner">
+      <div class="title-col">
+        <div class="eyebrow">Тула · Россия</div>
+        <h1 class="title">
+          Для<br>
+          <span class="title-word-orange">тульских.</span>
+        </h1>
+      </div>
+
+      <div class="info-col">
+        <div class="info-label">О бренде</div>
+        <p class="sub">
+          Одежда, вдохновлённая историей города. Создан теми, кто вырос здесь. Ограниченные тиражи — только онлайн через ВК и Telegram.
+        </p>
+        <div class="ctas">
+          <a href="#" class="btn-primary">Смотреть каталог →</a>
+          <a href="#" class="btn-secondary">О бренде</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bottom-cell"><div class="cell-dot"></div> Тула</div>
+    <div class="bottom-cell"><div class="cell-dot"></div> Since 2021</div>
+    <div class="bottom-cell"><div class="cell-dot"></div> Streetwear</div>
+    <div class="bottom-cell"><div class="cell-dot"></div> Ограниченные тиражи</div>
+    <div class="bottom-cell"><div class="cell-dot"></div> Россия</div>
+  </div>
+</section>
+</body>
+</html>

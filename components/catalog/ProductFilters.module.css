@@ -1,0 +1,179 @@
+.sidebar {
+  position: sticky;
+  top: calc(var(--header-h) + var(--sp-6));
+  max-height: calc(100vh - var(--header-h) - var(--sp-12));
+  overflow-y: auto;
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-5);
+}
+
+.group {
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.group:last-child { border-bottom: none; }
+
+.groupTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--text-xs);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  cursor: pointer;
+  padding: var(--sp-1) 0;
+}
+
+.optionInput {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--t-fast), border-color var(--t-fast);
+  position: relative;
+}
+.optionInput:checked {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+.optionInput:checked::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: var(--text-on-brand);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.optionLabel {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  transition: color var(--t-fast);
+}
+.option:hover .optionLabel { color: var(--text-primary); }
+
+.optionCount {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+/* Category pills (top bar) */
+.categoryBar {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-6);
+}
+
+.categoryPill {
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-full);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+  white-space: nowrap;
+}
+.categoryPill:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+.categoryPillActive {
+  color: var(--brand-gold);
+  border-color: var(--brand);
+  background: var(--brand-dim);
+}
+
+/* Sort */
+.sortRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
+  flex-wrap: wrap;
+}
+
+.resultsCount {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.sortSelect {
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: border-color var(--t-fast);
+}
+.sortSelect:focus, .sortSelect:hover { border-color: var(--text-muted); }
+.sortSelect option { background: var(--bg-elevated); }
+
+/* Reset */
+.resetBtn {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color var(--t-fast);
+  margin-top: var(--sp-4);
+  display: block;
+}
+.resetBtn:hover { color: var(--text-secondary); }
+
+/* Mobile filter button */
+.mobileFilterBtn {
+  display: none;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: border-color var(--t-fast), color var(--t-fast);
+}
+.mobileFilterBtn:hover {
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+  .sidebar { display: none; }
+  .mobileFilterBtn { display: flex; }
+}

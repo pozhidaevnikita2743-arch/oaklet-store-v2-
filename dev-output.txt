@@ -1,0 +1,497 @@
+﻿   ▲ Next.js 15.3.1
+   - Local:        http://localhost:3000
+   - Network:      http://172.18.0.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.7s
+ ○ Compiling / ...
+ ✓ Compiled / in 5.1s (872 modules)
+ GET / 200 in 5700ms
+ GET / 200 in 140ms
+cmd :  ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+At line:1 char:52
++ ... p\oaklet-store"; cmd /c "node_modules\.bin\next.cmd dev" 2>&1 | Out-F ...
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( ⨯ upstream ima...at&fit=crop 404:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1578662996418-f5c3ebe0c573?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1614180068877-92893ad7edeb?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1583743814966-8d4ea9d4e7bb?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1618354691373-d851c5c827c9?w=800&auto=format&fit=crop 404
+ GET / 200 in 94ms
+ ○ Compiling /catalog ...
+ ✓ Compiled /catalog in 616ms (843 modules)
+ GET /catalog 200 in 980ms
+ ✓ Compiled /about in 323ms (833 modules)
+ GET /about 200 in 472ms
+ ✓ Compiled /catalog/[slug] in 395ms (843 modules)
+ GET /catalog/hudi-samovar 200 in 1323ms
+ ✓ Compiled /_not-found in 281ms (837 modules)
+ GET /blah 404 in 399ms
+ ✓ Compiled in 555ms (812 modules)
+ GET / 200 in 136ms
+ ✓ Compiled in 226ms (812 modules)
+ GET / 200 in 123ms
+ GET / 200 in 222ms
+ ✓ Compiled in 212ms (812 modules)
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1614180068877-92893ad7edeb?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1618354691373-d851c5c827c9?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1583743814966-8d4ea9d4e7bb?w=800&auto=format&fit=crop 404
+ ✓ Compiled in 181ms (812 modules)
+ GET / 200 in 108ms
+ GET / 200 in 166ms
+ ✓ Compiled /catalog in 259ms (456 modules)
+ GET /catalog 200 in 407ms
+ GET /catalog 200 in 47ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1564584217132-2271fehi3e10?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1553636573-b3cfe1a5dfce?w=800&auto=format&fit=crop 404
+ GET /catalog?category=accessories 200 in 31ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1553636573-b3cfe1a5dfce?w=800&auto=format&fit=crop 404
+ GET /catalog 200 in 33ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+ GET /catalog?category=hoodies 200 in 27ms
+ ✓ Compiled /about in 169ms (461 modules)
+ GET /about 200 in 307ms
+ GET / 200 in 168ms
+ GET /catalog 200 in 164ms
+ GET / 200 in 40ms
+ GET /catalog 200 in 44ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1553636573-b3cfe1a5dfce?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1564584217132-2271fehi3e10?w=800&auto=format&fit=crop 404
+ GET /about 200 in 32ms
+ GET /catalog 200 in 37ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+ GET / 200 in 37ms
+ GET /catalog?category=accessories 200 in 42ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1553636573-b3cfe1a5dfce?w=800&auto=format&fit=crop 404
+ GET /catalog 200 in 36ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+ GET /catalog?category=hoodies 200 in 28ms
+ GET /catalog?category=tshirts 200 in 33ms
+ GET /catalog?category=longsleeves 200 in 35ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1564584217132-2271fehi3e10?w=800&auto=format&fit=crop 404
+ GET /catalog?category=headwear 200 in 34ms
+ GET /catalog?category=accessories 200 in 37ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1553636573-b3cfe1a5dfce?w=800&auto=format&fit=crop 404
+ GET /about 200 in 34ms
+ GET /catalog 200 in 38ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1564584217132-2271fehi3e10?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1553636573-b3cfe1a5dfce?w=800&auto=format&fit=crop 404
+ GET /catalog 200 in 170ms
+ ✓ Compiled in 1001ms (842 modules)
+ GET /catalog 200 in 177ms
+ ✓ Compiled in 312ms (838 modules)
+ GET /catalog 200 in 109ms
+ ✓ Compiled in 298ms (838 modules)
+ GET /catalog 200 in 80ms
+ ✓ Compiled in 341ms (838 modules)
+ GET /catalog 200 in 74ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /catalog 200 in 302ms
+ ✓ Compiled in 354ms (838 modules)
+ GET /catalog 200 in 83ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /catalog 200 in 217ms
+ ✓ Compiled in 333ms (838 modules)
+ GET /catalog 200 in 93ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /catalog 200 in 222ms
+ ✓ Compiled in 307ms (838 modules)
+ GET /catalog 200 in 77ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /catalog 200 in 228ms
+ ✓ Compiled in 316ms (838 modules)
+ GET /catalog 200 in 78ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /catalog 200 in 246ms
+ ✓ Compiled in 410ms (838 modules)
+ GET /catalog 200 in 83ms
+ ✓ Compiled in 307ms (838 modules)
+ GET /catalog 200 in 78ms
+ ✓ Compiled in 333ms (838 modules)
+ GET /catalog 200 in 105ms
+ ✓ Compiled in 171ms (377 modules)
+ GET /catalog 200 in 48ms
+ ✓ Compiled in 139ms (377 modules)
+ GET /catalog 200 in 53ms
+ GET / 200 in 230ms
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1564584217132-2271fehi3e10?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1553636573-b3cfe1a5dfce?w=800&auto=format&fit=crop 404
+ ⨯ upstream image response failed for https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=800&auto=format&fit=crop 404
+ GET /catalog 200 in 36ms
+ GET /catalog 200 in 32ms
+ GET /catalog 200 in 31ms
+ GET /catalog 200 in 31ms
+ GET / 200 in 31ms
+ ✓ Compiled in 882ms (828 modules)
+ ✓ Compiled in 383ms (838 modules)
+ GET / 200 in 149ms
+ GET / 200 in 64ms
+ ✓ Compiled in 203ms (461 modules)
+ GET / 200 in 126ms
+ GET / 200 in 41ms
+ ✓ Compiled in 405ms (839 modules)
+ GET / 200 in 166ms
+ GET / 200 in 46ms
+ ✓ Compiled in 424ms (849 modules)
+ GET / 200 in 110ms
+ GET / 200 in 39ms
+ ✓ Compiled in 293ms (853 modules)
+ GET / 200 in 89ms
+ GET / 200 in 64ms
+ ✓ Compiled in 394ms (849 modules)
+ GET / 200 in 89ms
+ GET / 200 in 43ms
+ ✓ Compiled in 382ms (849 modules)
+ GET / 200 in 87ms
+ GET / 200 in 43ms
+ ✓ Compiled in 393ms (849 modules)
+ GET / 200 in 95ms
+ GET / 200 in 47ms
+ ✓ Compiled in 372ms (849 modules)
+ GET / 200 in 86ms
+ GET / 200 in 58ms
+ ✓ Compiled in 325ms (849 modules)
+ GET / 200 in 90ms
+ GET / 200 in 60ms
+ ✓ Compiled in 571ms (853 modules)
+ GET / 200 in 155ms
+ GET / 200 in 39ms
+ ✓ Compiled /_not-found in 240ms (475 modules)
+ GET /_next/static/css/app/page.css?v=1777671693541 404 in 482ms
+ GET /_next/static/css/app/page.css?v=1777671693482 404 in 498ms
+ GET / 200 in 285ms
+ GET / 200 in 43ms
+ GET /_next/static/css/app/page.css?v=1777671694109 404 in 62ms
+ GET /_next/static/css/app/page.css?v=1777671694146 404 in 69ms
+ ✓ Compiled in 345ms (475 modules)
+ GET / 200 in 91ms
+ GET / 200 in 42ms
+ GET /_next/static/css/app/page.css?v=1777671706507 404 in 137ms
+ GET /_next/static/css/app/page.css?v=1777671706561 404 in 74ms
+ ✓ Compiled in 395ms (852 modules)
+ GET / 200 in 105ms
+ GET / 200 in 65ms
+ ✓ Compiled in 341ms (852 modules)
+ GET / 200 in 94ms
+ GET / 200 in 51ms
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16379)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16428) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/catalog'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 2.2s (1173 modules)
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19315)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19364) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET /catalog 500 in 3161ms
+ GET / 500 in 1355ms
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16379)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16428) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/catalog'
+}
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19315)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19364) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET /catalog 500 in 301ms
+ GET / 500 in 300ms
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19315)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19364) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16379)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16428) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/catalog'
+}
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16379)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16428) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/catalog'
+}
+ GET / 500 in 322ms
+ GET /catalog 500 in 320ms
+ GET /catalog 500 in 281ms
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16379)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\catalog\page.js:1:16428) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/catalog'
+}
+ GET /catalog 500 in 267ms
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19315)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19364) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 317ms
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19315)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19364) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 299ms
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19315)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19364) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 282ms
+ ⨯ Error: Cannot find module './703.js'
+Require stack:
+- C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js
+- C:\Users\user\Desktop\oaklet-store\.next\server\pages\_document.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\require.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\load-components.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\utils.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\options.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\swc\index.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\config.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\next.js
+- C:\Users\user\Desktop\oaklet-store\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (C:\Users\user\Desktop\oaklet-store\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19315)
+    at Object.<anonymous> (C:\Users\user\Desktop\oaklet-store\.next\server\app\page.js:1:19364) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET / 500 in 260ms
+[?25h

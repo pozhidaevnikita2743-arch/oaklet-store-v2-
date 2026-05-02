@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OAKLET — Вариант А</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #FAFAF8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: none;
+  opacity: 0;
+  animation: pageIn 0.9s ease 0.2s forwards;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Corner labels */
+.corner {
+  position: fixed;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #BBBBB5;
+}
+.corner-tl { top: 32px; left: 40px; }
+.corner-tr { top: 32px; right: 40px; text-align: right; }
+.corner-bl { bottom: 32px; left: 40px; }
+.corner-br { bottom: 32px; right: 40px; text-align: right; }
+
+/* Variant badge */
+.variant-badge {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #BBBBB5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.variant-badge::before,
+.variant-badge::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: #D8D8D2;
+}
+
+/* Main SVG */
+#svg-logo {
+  width: min(72vh, 72vw);
+  height: min(72vh, 72vw);
+  overflow: visible;
+}
+
+/* Rings animation */
+.ring-cw  { animation: rotateCW  20s linear infinite; transform-origin: 250px 250px; }
+.ring-ccw { animation: rotateCCW 28s linear infinite; transform-origin: 250px 250px; }
+
+@keyframes rotateCW  { to { transform: rotate(360deg);  } }
+@keyframes rotateCCW { to { transform: rotate(-360deg); } }
+
+/* Logo fade in */
+.logo-group {
+  opacity: 0;
+  animation: logoIn 0.8s ease 0.5s forwards;
+}
+@keyframes logoIn {
+  from { opacity: 0; transform: scale(0.96); transform-origin: 250px 250px; }
+  to   { opacity: 1; transform: scale(1);    transform-origin: 250px 250px; }
+}
+
+/* Rings fade in */
+.ring-cw {
+  opacity: 0;
+  animation: rotateCW 20s linear infinite, ringIn 0.6s ease 1.0s forwards;
+}
+.ring-ccw {
+  opacity: 0;
+  animation: rotateCCW 28s linear infinite, ringIn 0.6s ease 1.2s forwards;
+}
+@keyframes ringIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Circle guide lines (subtle) */
+.guide {
+  fill: none;
+  stroke: #EBEBEB;
+  stroke-width: 0.5;
+  opacity: 0;
+  animation: ringIn 0.6s ease 0.8s forwards;
+}
+
+/* Custom cursor — crosshair */
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+/* Vertical arm */
+.cursor::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: #111111;
+  transform: translateX(-50%);
+  /* small serif ticks at top and bottom */
+  box-shadow:
+    -3px 0px 0 0 #111111,
+     3px 0px 0 0 #111111,
+    -3px 19px 0 0 #111111,
+     3px 19px 0 0 #111111;
+}
+/* Horizontal arm */
+.cursor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #111111;
+  transform: translateY(-50%);
+  /* small serif ticks at left and right */
+  box-shadow:
+    0px -3px 0 0 #111111,
+    0px  3px 0 0 #111111,
+    19px -3px 0 0 #111111,
+    19px  3px 0 0 #111111;
+}
+</style>
+</head>
+<body>
+
+<!-- Corner labels -->
+<div class="corner corner-tl">Oaklet</div>
+<div class="corner corner-tr">Тула · 2021</div>
+<div class="corner corner-bl">Тульский бренд</div>
+
+<!-- Main composition -->
+<svg id="svg-logo" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Subtle guide circles -->
+  <circle class="guide" cx="250" cy="250" r="128"/>
+  <circle class="guide" cx="250" cy="250" r="148"/>
+
+  <!-- Logo image -->
+  <g class="logo-group">
+    <image
+      href="../фото/Логотип.jpg"
+      x="90" y="90"
+      width="320" height="320"
+      preserveAspectRatio="xMidYMid meet"
+    />
+  </g>
+
+  <!-- Outer ring (counter-clockwise) -->
+  <g class="ring-ccw" id="ring-outer"></g>
+
+  <!-- Inner ring (clockwise) -->
+  <g class="ring-cw" id="ring-inner"></g>
+
+</svg>
+
+<!-- Variant label -->
+<div class="variant-badge">Вариант А — только OAKLET</div>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+
+<script>
+const CX = 250, CY = 250;
+
+function placeCircleText(groupEl, text, radius, fontSize, color, letterSpacing) {
+  const ns = 'http://www.w3.org/2000/svg';
+  const chars = text.split('');
+  const total = chars.length;
+  const step = (2 * Math.PI) / total;
+
+  chars.forEach((ch, i) => {
+    const angle = i * step - Math.PI / 2; // start from 12 o'clock
+    const x = CX + radius * Math.cos(angle);
+    const y = CY + radius * Math.sin(angle);
+    const deg = (angle * 180 / Math.PI) + 90; // rotate char to face outward
+
+    const el = document.createElementNS(ns, 'text');
+    el.setAttribute('x', x);
+    el.setAttribute('y', y);
+    el.setAttribute('text-anchor', 'middle');
+    el.setAttribute('dominant-baseline', 'central');
+    el.setAttribute('transform', `rotate(${deg},${x},${y})`);
+    el.style.fontFamily = "'Inter', sans-serif";
+    el.style.fontSize = fontSize + 'px';
+    el.style.fontWeight = '500';
+    el.style.fill = color;
+    el.style.letterSpacing = letterSpacing;
+    el.textContent = ch;
+    groupEl.appendChild(el);
+  });
+}
+
+// Inner ring — closer, slightly smaller text
+const textInner = 'OAKLET  ·  OAKLET  ·  OAKLET  ·  OAKLET  ·  OAKLET  ·  OAKLET  ·  ';
+placeCircleText(
+  document.getElementById('ring-inner'),
+  textInner,
+  128,   // radius
+  10,    // font-size
+  '#111111',
+  '0.04em'
+);
+
+// Outer ring — farther, same text, slightly larger
+const textOuter = 'OAKLET  ·  OAKLET  ·  OAKLET  ·  OAKLET  ·  OAKLET  ·  OAKLET  ·  OAKLET  ·  ';
+placeCircleText(
+  document.getElementById('ring-outer'),
+  textOuter,
+  148,   // radius
+  10,
+  '#111111',
+  '0.04em'
+);
+
+// ─── Custom cursor (smooth lag) ───────────────────────────────
+const cursor = document.getElementById('cursor');
+let cx = -100, cy = -100, tx = -100, ty = -100;
+
+document.addEventListener('mousemove', e => {
+  tx = e.clientX;
+  ty = e.clientY;
+});
+
+(function loop() {
+  cx += (tx - cx) * 0.13;
+  cy += (ty - cy) * 0.13;
+  cursor.style.left  = (cx - 10) + 'px';
+  cursor.style.top   = (cy - 10) + 'px';
+  requestAnimationFrame(loop);
+})();
+
+// Hover effect on cursor
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+/* ─── Hero ───────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 80px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Giant outline "OAKLET" as background element */
+.heroBgBrand {
+  position: absolute;
+  bottom: -0.12em;
+  right: -0.04em;
+  font-family: var(--font-display);
+  font-size: clamp(13rem, 26vw, 28rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(17, 17, 17, 0.07);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Faded logo watermark */
+.heroLogoWrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: clamp(320px, 38vw, 520px);
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroLogo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom right;
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  filter: grayscale(1) contrast(1.4);
+  mask-image: linear-gradient(to left, black 30%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to left, black 30%, transparent 80%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  animation: slideUp 0.8s ease both;
+}
+
+.heroEyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-5);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.heroEyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(5.5rem, 16vw, 14rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-8);
+}
+
+/* "тульских." — italic, slightly lighter */
+.heroTitleAccent {
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.heroSub {
+  font-size: clamp(var(--text-base), 1.6vw, var(--text-lg));
+  color: var(--text-secondary);
+  max-width: 420px;
+  line-height: 1.65;
+  margin-bottom: var(--sp-10);
+}
+
+.heroCtas {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-7);
+  background: var(--brand);
+  color: var(--text-on-brand);
+  border-radius: var(--r-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: background var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+}
+.ctaPrimary:hover {
+  background: var(--brand-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-4) var(--sp-7);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--r-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+.ctaSecondary:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  background: var(--bg-raised);
+}
+
+/* Bottom metadata strip */
+.heroMeta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  border-top: 1px solid var(--border-subtle);
+  padding: var(--sp-3) var(--pad-x);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  overflow: hidden;
+}
+.heroMetaDot {
+  color: var(--border);
+  font-size: 8px;
+}
+
+/* Scroll indicator */
+.scrollHint {
+  position: absolute;
+  bottom: var(--sp-10);
+  right: var(--pad-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--text-muted);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: slideUp 1s ease 0.5s both;
+  z-index: 3;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(17,17,17,0.25), transparent);
+}
+
+/* ─── Features bar ───────────────────────────────────────────────────────── */
+.featBar {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: var(--sp-5) 0;
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.featBarInner {
+  display: flex;
+  gap: var(--sp-12);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.featBarItem {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+}
+
+.featBarIcon {
+  font-size: var(--text-xl);
+  line-height: 1;
+}
+
+.featBarText {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+/* ─── Section commons ────────────────────────────────────────────────────── */
+.section {
+  padding: var(--sp-20) 0;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--sp-10);
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.sectionEyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--sp-2);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.sectionLink {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  transition: color var(--t-fast);
+  white-space: nowrap;
+}
+.sectionLink:hover { color: var(--brand); }
+
+/* ─── Product grid ───────────────────────────────────────────────────────── */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-5);
+}
+
+/* ─── Brand story ────────────────────────────────────────────────────────── */
+.story {
+  padding: var(--sp-24) 0;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-16);
+  align-items: center;
+}
+
+.storyYear {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 16vw, 14rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(17, 17, 17, 0.18);
+  user-select: none;
+}
+
+.storyEyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--sp-4);
+}
+
+.storyTitle {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  line-height: 1.05;
+  margin-bottom: var(--sp-6);
+}
+
+.storyText {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--sp-4);
+}
+
+.storyValues {
+  display: flex;
+  gap: var(--sp-6);
+  margin-top: var(--sp-8);
+  flex-wrap: wrap;
+}
+
+.storyValue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.storyValueNum {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+}
+
+.storyValueLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ─── How to buy ─────────────────────────────────────────────────────────── */
+.howTo {
+  padding: var(--sp-20) 0;
+}
+
+.howToCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-5);
+  margin-top: var(--sp-10);
+}
+
+.howToCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-8);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--t-normal), background var(--t-normal), transform var(--t-normal);
+}
+.howToCard:hover {
+  border-color: var(--brand);
+  background: var(--bg-elevated);
+  transform: translateY(-2px);
+}
+
+.howToCardIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.howToCardIconVK {
+  background: var(--bg-raised);
+  color: var(--text-secondary);
+}
+
+.howToCardIconTG {
+  background: var(--bg-raised);
+  color: var(--text-secondary);
+}
+
+.howToCardTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.howToCardDesc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.howToCardArrow {
+  margin-top: auto;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+/* ─── Manifesto strip ────────────────────────────────────────────────────── */
+.manifesto {
+  padding: var(--sp-20) 0;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.manifestoText {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4.5vw, var(--text-5xl));
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  line-height: 1.15;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.manifestoAccent {
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+}
+.manifestoAccent::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+  .storyYear { text-align: center; }
+  .howToCards { grid-template-columns: 1fr; }
+  .productGrid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-3); }
+  .heroLogoWrap { display: none; }
+  .heroMeta { gap: var(--sp-3); }
+}
+
+@media (max-width: 480px) {
+  .heroTitle { line-height: 0.9; }
+  .heroCtas { flex-direction: column; }
+  .ctaPrimary, .ctaSecondary { justify-content: center; }
+  .featBarInner { gap: var(--sp-6); }
+  .heroBgBrand { font-size: clamp(8rem, 40vw, 13rem); }
+  .heroMeta span:not(.heroMetaDot):nth-child(n+7) { display: none; }
+}

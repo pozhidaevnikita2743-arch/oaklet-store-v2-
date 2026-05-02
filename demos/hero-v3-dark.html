@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero V3 — Dark Luxury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Inter', sans-serif; }
+a { text-decoration: none; color: inherit; }
+
+.hero {
+  min-height: 100svh;
+  background: #161614;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Subtle warm vignette */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(200,170,120,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem clamp(1.5rem, 5vw, 3.5rem);
+  border-bottom: 1px solid rgba(250,248,240,0.07);
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #F5F0E8;
+}
+
+.brand-tag {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200,170,120,0.7);
+  border: 1px solid rgba(200,170,120,0.3);
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-left: 0.625rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.45);
+}
+
+/* Center content */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem clamp(1.5rem, 5vw, 3.5rem);
+  position: relative;
+  z-index: 2;
+}
+
+/* Accent line */
+.accent-line {
+  width: 3rem;
+  height: 1px;
+  background: rgba(200,170,120,0.6);
+  margin-bottom: 1.75rem;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200,170,120,0.75);
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 13vw, 13rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  color: #F5F0E8;
+  margin-bottom: 2.5rem;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 300;
+  display: block;
+  color: rgba(245,240,232,0.7);
+}
+
+.sub {
+  font-size: 0.9375rem;
+  color: rgba(245,240,232,0.5);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.ctas {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: rgba(200,170,120,0.15);
+  border: 1px solid rgba(200,170,120,0.4);
+  color: rgba(200,170,120,0.9);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-primary:hover { background: rgba(200,170,120,0.25); border-color: rgba(200,170,120,0.7); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 2rem;
+  border: 1px solid rgba(245,240,232,0.12);
+  color: rgba(245,240,232,0.4);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover { border-color: rgba(245,240,232,0.3); color: rgba(245,240,232,0.7); }
+
+/* Background text */
+.bg-text {
+  position: absolute;
+  right: -0.04em;
+  bottom: -0.1em;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14rem, 28vw, 30rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245,240,232,0.05);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Bottom strip */
+.bottom-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem clamp(1.5rem, 5vw, 3.5rem);
+  border-top: 1px solid rgba(250,248,240,0.07);
+  position: relative;
+  z-index: 2;
+}
+
+.strip-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.25);
+}
+
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.25);
+}
+.scroll-line {
+  width: 24px;
+  height: 1px;
+  background: rgba(200,170,120,0.4);
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="bg-text">OAKLET</div>
+
+  <div class="top-bar">
+    <div>
+      <span class="brand">OAKLET</span>
+      <span class="brand-tag">Тула</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Каталог</a>
+      <a href="#">О бренде</a>
+      <a href="#">Контакты</a>
+    </nav>
+  </div>
+
+  <div class="content">
+    <div class="accent-line"></div>
+    <div class="eyebrow">Тула · Россия · Since 2021</div>
+    <h1 class="title">
+      Для<br>
+      <em>тульских.</em>
+    </h1>
+    <p class="sub">
+      Бренд уличной одежды, вдохновлённый историей города. Ограниченные тиражи. Только онлайн.
+    </p>
+    <div class="ctas">
+      <a href="#" class="btn-primary">Смотреть каталог →</a>
+      <a href="#" class="btn-secondary">О бренде</a>
+    </div>
+  </div>
+
+  <div class="bottom-strip">
+    <div class="strip-meta">
+      <span>OAKLET</span>
+      <span>·</span>
+      <span>Тула</span>
+      <span>·</span>
+      <span>Streetwear</span>
+      <span>·</span>
+      <span>2021</span>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark E3 — Olive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Inter', sans-serif; background: #0A0C09; color: #E2E8DC; }
+a { text-decoration: none; color: inherit; }
+
+/* Muted olive-sage accent — earthy but not orange */
+:root {
+  --accent: #8AAE7A;           /* desaturated sage */
+  --accent-dim: rgba(138,174,122,0.15);
+  --text: #E2E8DC;
+  --text-dim: rgba(226,232,220,0.45);
+  --text-faint: rgba(226,232,220,0.18);
+  --border: rgba(226,232,220,0.07);
+}
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle warm-green ambient bottom-left */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 60vw;
+  height: 50vw;
+  background: radial-gradient(ellipse, rgba(138,174,122,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Top accent stripe — very thin */
+.top-stripe {
+  height: 2px;
+  background: linear-gradient(to right, var(--accent) 0%, rgba(138,174,122,0.15) 60%, transparent 100%);
+  opacity: 0.7;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem clamp(1.5rem, 5vw, 3.5rem);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
+}
+
+.brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* Content — centered vertically */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem clamp(1.5rem, 5vw, 3.5rem);
+  position: relative;
+  z-index: 2;
+}
+
+/* Two-col layout */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: center;
+}
+
+.col-title {}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0.9;
+}
+.eyebrow-line { width: 18px; height: 1px; background: var(--accent); opacity: 0.7; }
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 9vw, 9.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  color: var(--text);
+}
+.title em {
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+  /* Outline instead of fill — modern touch */
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+}
+
+.col-info {}
+
+.info-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.sub {
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.tag {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(138,174,122,0.25);
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: rgba(138,174,122,0.06);
+}
+
+.ctas { display: flex; gap: 0.625rem; }
+
+.btn-primary {
+  padding: 0.875rem 2rem;
+  background: var(--accent);
+  color: #0A0C09;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: opacity 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btn-primary:hover { opacity: 0.88; }
+
+.btn-secondary {
+  padding: 0.875rem 2rem;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
+
+/* Bottom */
+.footer-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem clamp(1.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.scroll { display: flex; align-items: center; gap: 0.5rem; }
+.scroll-line { width: 20px; height: 1px; background: rgba(138,174,122,0.45); }
+</style>
+</head>
+<body>
+<div class="top-stripe"></div>
+<section class="hero">
+  <header class="header">
+    <span class="brand-name">OAKLET</span>
+    <nav class="nav">
+      <a href="#">Каталог</a><a href="#">О бренде</a><a href="#">Контакты</a>
+    </nav>
+  </header>
+
+  <div class="content">
+    <div class="two-col">
+      <div class="col-title">
+        <div class="eyebrow"><div class="eyebrow-line"></div>Тула · 2021</div>
+        <h1 class="title">Для<br><em>тульских.</em></h1>
+      </div>
+
+      <div class="col-info">
+        <div class="info-label">О коллекции</div>
+        <p class="sub">Одежда, вдохновлённая историей города. Создан теми, кто вырос здесь. Ограниченные тиражи — только онлайн.</p>
+        <div class="tags">
+          <span class="tag">Тула</span>
+          <span class="tag">Streetwear</span>
+          <span class="tag">SS 2025</span>
+        </div>
+        <div class="ctas">
+          <a href="#" class="btn-primary">Каталог →</a>
+          <a href="#" class="btn-secondary">О бренде</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-strip">
+    <span>OAKLET · Тула · Россия · Since 2021</span>
+    <div class="scroll"><div class="scroll-line"></div>Scroll</div>
+  </div>
+</section>
+</body>
+</html>

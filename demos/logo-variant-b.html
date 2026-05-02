@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OAKLET — Вариант Б</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #FAFAF8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: none;
+  opacity: 0;
+  animation: pageIn 0.9s ease 0.2s forwards;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Corner labels */
+.corner {
+  position: fixed;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #BBBBB5;
+}
+.corner-tl { top: 32px; left: 40px; }
+.corner-tr { top: 32px; right: 40px; text-align: right; }
+.corner-bl { bottom: 32px; left: 40px; }
+
+/* Variant badge */
+.variant-badge {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #BBBBB5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+.variant-badge::before,
+.variant-badge::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: #D8D8D2;
+  flex-shrink: 0;
+}
+
+/* Main SVG */
+#svg-logo {
+  width: min(72vh, 72vw);
+  height: min(72vh, 72vw);
+  overflow: visible;
+}
+
+/* Rings */
+.ring-cw  { animation: rotateCW  24s linear infinite; transform-origin: 250px 250px; }
+.ring-ccw { animation: rotateCCW 32s linear infinite; transform-origin: 250px 250px; }
+
+@keyframes rotateCW  { to { transform: rotate(360deg);  } }
+@keyframes rotateCCW { to { transform: rotate(-360deg); } }
+
+.logo-group {
+  opacity: 0;
+  animation: logoIn 0.8s ease 0.5s forwards;
+}
+@keyframes logoIn {
+  from { opacity: 0; transform: scale(0.96); transform-origin: 250px 250px; }
+  to   { opacity: 1; transform: scale(1);    transform-origin: 250px 250px; }
+}
+
+.ring-cw {
+  opacity: 0;
+  animation: rotateCW 24s linear infinite, ringIn 0.6s ease 1.0s forwards;
+}
+.ring-ccw {
+  opacity: 0;
+  animation: rotateCCW 32s linear infinite, ringIn 0.6s ease 1.2s forwards;
+}
+@keyframes ringIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.guide {
+  fill: none;
+  stroke: #E8E8E4;
+  stroke-width: 0.5;
+  opacity: 0;
+  animation: ringIn 0.6s ease 0.8s forwards;
+}
+
+/* Custom cursor */
+.cursor {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #111111;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease;
+}
+</style>
+</head>
+<body>
+
+<div class="corner corner-tl">Oaklet</div>
+<div class="corner corner-tr">Тула · 2021</div>
+<div class="corner corner-bl">Тульский бренд</div>
+
+<svg id="svg-logo" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Guide circles (decorative) -->
+  <circle class="guide" cx="250" cy="250" r="128"/>
+  <circle class="guide" cx="250" cy="250" r="148"/>
+
+  <!-- Logo -->
+  <g class="logo-group">
+    <image
+      href="../фото/Логотип.jpg"
+      x="90" y="90"
+      width="320" height="320"
+      preserveAspectRatio="xMidYMid meet"
+    />
+  </g>
+
+  <!-- Outer ring (counter-clockwise) -->
+  <g class="ring-ccw" id="ring-outer"></g>
+
+  <!-- Inner ring (clockwise) -->
+  <g class="ring-cw" id="ring-inner"></g>
+
+</svg>
+
+<div class="variant-badge">Вариант Б — OAKLET · ТУЛА · 2021</div>
+
+<div class="cursor" id="cursor"></div>
+
+<script>
+const CX = 250, CY = 250;
+
+function placeCircleText(groupEl, text, radius, fontSize, color) {
+  const ns = 'http://www.w3.org/2000/svg';
+  const chars = text.split('');
+  const total = chars.length;
+  const step = (2 * Math.PI) / total;
+
+  chars.forEach((ch, i) => {
+    const angle = i * step - Math.PI / 2;
+    const x = CX + radius * Math.cos(angle);
+    const y = CY + radius * Math.sin(angle);
+    const deg = (angle * 180 / Math.PI) + 90;
+
+    const el = document.createElementNS(ns, 'text');
+    el.setAttribute('x', x);
+    el.setAttribute('y', y);
+    el.setAttribute('text-anchor', 'middle');
+    el.setAttribute('dominant-baseline', 'central');
+    el.setAttribute('transform', `rotate(${deg},${x},${y})`);
+    el.style.fontFamily = "'Inter', sans-serif";
+    el.style.fontSize = fontSize + 'px';
+    el.style.fontWeight = '500';
+    el.style.fill = color;
+    el.textContent = ch;
+    groupEl.appendChild(el);
+  });
+}
+
+// Inner ring: OAKLET · ТУЛА · 2021 ·
+const textInner = 'OAKLET  ·  ТУЛА  ·  2021  ·  OAKLET  ·  ТУЛА  ·  2021  ·  ';
+placeCircleText(
+  document.getElementById('ring-inner'),
+  textInner,
+  128,
+  10,
+  '#111111'
+);
+
+// Outer ring: same text, slightly different spacing/radius
+const textOuter = 'OAKLET  ·  ТУЛА  ·  2021  ·  OAKLET  ·  ТУЛА  ·  2021  ·  OAKLET  ·  ';
+placeCircleText(
+  document.getElementById('ring-outer'),
+  textOuter,
+  148,
+  10,
+  '#111111'
+);
+
+// ─── Cursor ──────────────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+let cx = -100, cy = -100, tx = -100, ty = -100;
+
+document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+
+(function loop() {
+  cx += (tx - cx) * 0.13;
+  cy += (ty - cy) * 0.13;
+  cursor.style.left  = (cx - 15) + 'px';
+  cursor.style.top   = (cy - 15) + 'px';
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

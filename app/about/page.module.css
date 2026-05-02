@@ -1,0 +1,228 @@
+.hero {
+  padding: var(--sp-16) 0 var(--sp-12);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--sp-20);
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: var(--sp-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-5xl), 8vw, 9rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 0.95;
+  margin-bottom: var(--sp-6);
+}
+
+.subtitle {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+/* Story */
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-16);
+  margin-bottom: var(--sp-20);
+}
+
+.storyText {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--sp-5);
+}
+
+.storyTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-6);
+}
+
+.bigNum {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 14vw, 12rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(17, 17, 17, 0.18);
+  user-select: none;
+  text-align: right;
+}
+
+/* Values */
+.values {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  padding: var(--sp-12);
+  margin-bottom: var(--sp-20);
+}
+
+.valuesTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-8);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-8);
+}
+
+.valueItem {}
+
+.valueIcon {
+  font-size: var(--text-3xl);
+  line-height: 1;
+  margin-bottom: var(--sp-3);
+}
+
+.valueName {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+}
+
+.valueDesc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Contacts */
+.contacts {
+  margin-bottom: var(--sp-20);
+}
+
+.contactsTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-8);
+}
+
+.contactsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-5);
+}
+
+.contactCard {
+  padding: var(--sp-6);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--t-normal), background var(--t-normal);
+}
+.contactCard:hover {
+  border-color: var(--brand);
+  background: var(--bg-elevated);
+}
+
+.contactCardLabel {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.contactCardValue {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.contactCardNote {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Delivery */
+.delivery {
+  padding: var(--sp-12);
+  background: var(--brand-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  margin-bottom: var(--sp-20);
+}
+
+.deliveryTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-6);
+}
+
+.deliveryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+}
+
+.deliveryItem {}
+
+.deliveryItemTitle {
+  font-weight: 600;
+  color: var(--brand-gold);
+  margin-bottom: var(--sp-2);
+}
+
+.deliveryItemText {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+@media (max-width: 1024px) {
+  .story { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .bigNum { text-align: left; }
+  .valuesGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .valuesGrid { grid-template-columns: 1fr; }
+  .contactsGrid { grid-template-columns: 1fr; }
+  .deliveryGrid { grid-template-columns: 1fr; }
+}

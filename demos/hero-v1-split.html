@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero V1 — Split</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Inter', sans-serif; background: #FAFAF8; }
+
+a { text-decoration: none; color: inherit; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  min-height: 100svh;
+}
+
+/* ── Left panel: black */
+.left {
+  background: #111111;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem;
+  overflow: hidden;
+}
+
+.left-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(6rem, 12vw, 11rem);
+  font-weight: 700;
+  color: #FAFAF8;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  align-self: flex-end;
+  opacity: 0.95;
+}
+
+.left-year {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.35);
+}
+
+.left-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(250,250,248,0.12) 30%, rgba(250,250,248,0.12) 70%, transparent);
+}
+
+/* ── Right panel: light */
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem 3rem 3rem;
+  position: relative;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #888882;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: absolute;
+  top: 2.5rem;
+  left: 3rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: #888882;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 7.5vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  color: #111111;
+  margin-bottom: 2rem;
+}
+.title em {
+  font-style: italic;
+  font-weight: 300;
+  display: block;
+  color: #4A4A46;
+}
+
+.sub {
+  font-size: 0.9375rem;
+  color: #4A4A46;
+  line-height: 1.65;
+  max-width: 380px;
+  margin-bottom: 2.5rem;
+}
+
+.ctas {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: #111111;
+  color: #FAFAF8;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #333; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border: 1px solid rgba(17,17,17,0.15);
+  color: #4A4A46;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-secondary:hover { border-color: #111; color: #111; }
+
+.meta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(17,17,17,0.07);
+  padding: 0.875rem 3rem;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #888882;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(17,17,17,0.3);
+  border: 1px solid rgba(17,17,17,0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+  margin-bottom: 1.25rem;
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="left">
+    <div class="left-year">Тула · 2021</div>
+    <div class="left-brand">OAKLET</div>
+    <div class="left-line"></div>
+  </div>
+
+  <div class="right">
+    <div class="eyebrow">Streetwear · Russia</div>
+
+    <div class="label">New collection</div>
+    <h1 class="title">
+      Для<br>
+      <em>тульских.</em>
+    </h1>
+    <p class="sub">
+      Бренд одежды, вдохновлённый историей города. Создан теми, кто вырос здесь.
+    </p>
+    <div class="ctas">
+      <a href="#" class="btn-primary">Смотреть каталог →</a>
+      <a href="#" class="btn-secondary">О бренде</a>
+    </div>
+
+    <div class="meta">
+      <span>OAKLET</span>
+      <span>·</span>
+      <span>Тула</span>
+      <span>·</span>
+      <span>Since 2021</span>
+      <span>·</span>
+      <span>Ограниченные тиражи</span>
+    </div>
+  </div>
+</section>
+</body>
+</html>

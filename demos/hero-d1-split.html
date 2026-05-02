@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark V1 — Split</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Inter', sans-serif; background: #0A0A0A; }
+a { text-decoration: none; color: inherit; }
+
+:root {
+  --brand: #C47B3A;
+  --brand-hover: #D4894A;
+  --bg: #0A0A0A;
+  --bg-raised: #161614;
+  --text: #F0EDE6;
+  --text-dim: #8A8880;
+  --text-faint: #3A3A38;
+  --border: rgba(240,237,230,0.07);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 44% 56%;
+  min-height: 100svh;
+}
+
+/* ── Left: darkest, vertical brand */
+.left {
+  background: #050505;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+}
+
+/* Warm orange glow behind the brand name */
+.left::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(196,123,58,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.left-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.left-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--brand);
+  border-radius: 50%;
+}
+
+.left-year {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand);
+  opacity: 0.7;
+}
+
+.left-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5.5rem, 10vw, 10rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  align-self: flex-end;
+  opacity: 0.92;
+}
+
+.left-bottom {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.left-line {
+  width: 20px;
+  height: 1px;
+  background: var(--brand);
+  opacity: 0.6;
+}
+
+.left-city {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ── Right: slightly lighter dark */
+.right {
+  background: var(--bg-raised);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle warm gradient top-right */
+.right::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(196,123,58,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding: 1.75rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.right-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem 2.5rem 0;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--brand);
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 7vw, 7.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  color: var(--text);
+  margin-bottom: 1.75rem;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 300;
+  display: block;
+  color: rgba(240,237,230,0.65);
+}
+
+.sub {
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 380px;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.ctas {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--brand);
+  color: #0A0A0A;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--brand-hover); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 2rem;
+  border: 1px solid rgba(240,237,230,0.12);
+  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-secondary:hover { border-color: var(--brand); color: var(--brand); }
+
+.right-meta {
+  padding: 1.25rem 2.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.meta-tags {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.scroll-line { width: 20px; height: 1px; background: var(--brand); opacity: 0.5; }
+</style>
+</head>
+<body>
+<section class="hero">
+
+  <!-- Left: brand column -->
+  <div class="left">
+    <div class="left-top">
+      <div class="left-dot"></div>
+      <div class="left-year">2021</div>
+    </div>
+    <div class="left-brand">OAKLET</div>
+    <div class="left-bottom">
+      <div class="left-line"></div>
+      <div class="left-city">Тула</div>
+    </div>
+  </div>
+
+  <!-- Right: content -->
+  <div class="right">
+    <nav class="right-nav">
+      <a href="#">Каталог</a>
+      <a href="#">О бренде</a>
+      <a href="#">Контакты</a>
+    </nav>
+
+    <div class="right-content">
+      <div class="eyebrow">Streetwear · Russia</div>
+      <h1 class="title">
+        Для<br>
+        <em>тульских.</em>
+      </h1>
+      <p class="sub">
+        Бренд одежды, вдохновлённый историей города. Ограниченные тиражи — продажа через ВК и Telegram.
+      </p>
+      <div class="ctas">
+        <a href="#" class="btn-primary">Смотреть каталог →</a>
+        <a href="#" class="btn-secondary">О бренде</a>
+      </div>
+    </div>
+
+    <div class="right-meta">
+      <div class="meta-tags">
+        <span>OAKLET</span><span>·</span>
+        <span>Тула</span><span>·</span>
+        <span>Since 2021</span><span>·</span>
+        <span>Ограниченные тиражи</span>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+</body>
+</html>
