@@ -117,6 +117,103 @@
   line-height: 1.65;
 }
 
+/* Timeline */
+.timeline {
+  margin-bottom: var(--sp-20);
+}
+
+.timelineTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-10);
+}
+
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 80px 32px 1fr;
+  gap: var(--sp-6);
+  align-items: start;
+  animation: fadeUp 0.5s ease both;
+}
+.timelineItem:nth-child(1) { animation-delay: 0.0s; }
+.timelineItem:nth-child(2) { animation-delay: 0.1s; }
+.timelineItem:nth-child(3) { animation-delay: 0.2s; }
+.timelineItem:nth-child(4) { animation-delay: 0.3s; }
+
+.timelineYear {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-muted);
+  padding-top: 2px;
+  text-align: right;
+}
+
+.timelineConnector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.timelineDot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--r-full);
+  background: var(--brand);
+  flex-shrink: 0;
+  margin-top: 6px;
+  transition: transform var(--t-normal);
+}
+.timelineItem:hover .timelineDot {
+  transform: scale(1.4);
+}
+
+.timelineLine {
+  width: 1px;
+  flex: 1;
+  background: var(--border-subtle);
+  min-height: 48px;
+  margin-top: var(--sp-2);
+}
+.timelineItem:last-child .timelineLine {
+  display: none;
+}
+
+.timelineContent {
+  padding-bottom: var(--sp-10);
+}
+.timelineItem:last-child .timelineContent {
+  padding-bottom: 0;
+}
+
+.timelineEvent {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+}
+
+.timelineDesc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
 /* Contacts */
 .contacts {
   margin-bottom: var(--sp-20);

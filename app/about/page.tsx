@@ -96,6 +96,47 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Timeline */}
+      <section className={s.timeline} id="timeline">
+        <h2 className={s.timelineTitle}>История бренда</h2>
+        <div className={s.timelineList}>
+          {[
+            {
+              year: '2021',
+              event: 'Основание',
+              desc: 'Первые вещи, первые заказы через ВКонтакте — без сайта и лишней помпезности. Просто одежда и идея.',
+            },
+            {
+              year: '2022',
+              event: 'Коллаборации',
+              desc: 'Дроп с тульским пространством «Искра». Ограниченный тираж разошёлся за неделю — поняли, что зашло.',
+            },
+            {
+              year: '2023',
+              event: 'Тула-коллекция',
+              desc: 'Первая полноценная коллекция: Самовар, Кремль, Левша, Засека — вся история города в одежде.',
+            },
+            {
+              year: '2024',
+              event: 'Telegram',
+              desc: 'Запустили канал в Telegram. Теперь заказывают из любой точки России — быстро и напрямую.',
+            },
+          ].map(({ year, event, desc }) => (
+            <div key={year} className={s.timelineItem}>
+              <div className={s.timelineYear}>{year}</div>
+              <div className={s.timelineConnector}>
+                <div className={s.timelineDot} />
+                <div className={s.timelineLine} />
+              </div>
+              <div className={s.timelineContent}>
+                <div className={s.timelineEvent}>{event}</div>
+                <p className={s.timelineDesc}>{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Contacts */}
       <section className={s.contacts} id="contacts">
         <h2 className={s.contactsTitle}>Контакты</h2>

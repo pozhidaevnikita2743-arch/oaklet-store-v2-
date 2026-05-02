@@ -39,6 +39,11 @@
   gap: var(--sp-5);
 }
 
+.cardWrapper {
+  animation: fadeUp 0.45s ease both;
+  animation-delay: var(--stagger, 0ms);
+}
+
 .empty {
   padding: var(--sp-16) 0;
   text-align: center;

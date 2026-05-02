@@ -88,7 +88,13 @@ export default async function CatalogPage({ searchParams }: PageProps) {
               ) : (
                 <div className={s.grid}>
                   {products.map((product, i) => (
-                    <ProductCard key={product.id} product={product} priority={i < 4} />
+                    <div
+                      key={product.id}
+                      className={s.cardWrapper}
+                      style={{ '--stagger': `${Math.min(i, 7) * 55}ms` } as React.CSSProperties}
+                    >
+                      <ProductCard product={product} priority={i < 4} />
+                    </div>
                   ))}
                 </div>
               )}
