@@ -24,6 +24,8 @@ export type CategorySlug =
   | 'longsleeves'
   | 'headwear'
   | 'accessories'
+  | 'pants'
+  | 'lingerie'
 
 export interface Category {
   slug: CategorySlug
