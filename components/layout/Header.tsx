@@ -63,48 +63,50 @@ export default function Header() {
   }, [mobileOpen])
 
   return (
-    <header className={s.header}>
-      <div className={`container ${s.inner}`}>
-        <Link href="/" className={s.logo}>
-          <span className={s.logoMark}>Oaklet</span>
-          <span className={s.logoTag}>Тула</span>
-        </Link>
+    <>
+      <header className={s.header}>
+        <div className={`container ${s.inner}`}>
+          <Link href="/" className={s.logo}>
+            <span className={s.logoMark}>Oaklet</span>
+            <span className={s.logoTag}>Тула</span>
+          </Link>
 
-        <nav className={s.nav} aria-label="Основная навигация">
-          {NAV.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={`${s.navLink} ${pathname.startsWith(href) ? s.navLinkActive : ''}`}
+          <nav className={s.nav} aria-label="Основная навигация">
+            {NAV.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`${s.navLink} ${pathname.startsWith(href) ? s.navLinkActive : ''}`}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className={s.actions}>
+            <button
+              className={`${s.iconBtn} ${s.cartBtn}`}
+              onClick={openCart}
+              aria-label={`Корзина, ${totalItems} товаров`}
             >
-              {label}
-            </Link>
-          ))}
-        </nav>
+              <IconCart />
+              {totalItems > 0 && (
+                <span className={`${s.cartCount} ${bouncing ? s.cartCountBounce : ''}`}>
+                  {totalItems}
+                </span>
+              )}
+            </button>
 
-        <div className={s.actions}>
-          <button
-            className={`${s.iconBtn} ${s.cartBtn}`}
-            onClick={openCart}
-            aria-label={`Корзина, ${totalItems} товаров`}
-          >
-            <IconCart />
-            {totalItems > 0 && (
-              <span className={`${s.cartCount} ${bouncing ? s.cartCountBounce : ''}`}>
-                {totalItems}
-              </span>
-            )}
-          </button>
-
-          <button
-            className={`${s.iconBtn} ${s.burger}`}
-            onClick={() => setMobileOpen(true)}
-            aria-label="Открыть меню"
-          >
-            <IconMenu />
-          </button>
+            <button
+              className={`${s.iconBtn} ${s.burger}`}
+              onClick={() => setMobileOpen(true)}
+              aria-label="Открыть меню"
+            >
+              <IconMenu />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       {mobileOpen && (
         <div className={s.mobileNav}>
@@ -132,6 +134,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+    </>
   )
 }
