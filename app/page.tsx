@@ -55,7 +55,7 @@ export default function HomePage() {
           <div className={s.heroEyebrow}>Тула · 2021</div>
           <h1 className={s.heroTitle}>
             Для<br />
-            <em className={s.heroTitleAccent}>тульских.</em>
+            <em className={s.heroTitleAccent}>тульских</em>
           </h1>
           <p className={s.heroSub}>
             Бренд одежды, вдохновлённый историей города. Создан теми, кто вырос здесь. Для тех, кто ценит свободу и творчество.
@@ -111,8 +111,8 @@ export default function HomePage() {
       <div className={s.manifesto}>
         <div className="container">
           <p className={s.manifestoText}>
-            Не просто одежда — это позиция.<br />
-            Тульская история. Молодёжный взгляд.
+            Не просто одежда — это позиция<br />
+            Тульская история<br />Молодёжный взгляд
           </p>
         </div>
       </div>
