@@ -78,8 +78,8 @@ export default function CartDrawer() {
   if (!isOpen) return null
 
   const msg = buildOrderMessage(items, totalPrice)
-  const vkUrl = `https://vk.com/im?sel=-226804234&message=${msg}`
-  const tgUrl = `https://t.me/oaklet_store?text=${msg}`
+  const vkUrl = `https://vk.com/write-oaklet_store?message=${msg}`
+  const tgUrl = `https://t.me/mchbl_db?text=${msg}`
 
   const handleCopy = async () => {
     try {
