@@ -94,10 +94,10 @@ export default function HomePage() {
       <div className={s.featBar}>
         <div className={`container ${s.featBarInner}`}>
           {[
-            { icon: '🏙', text: 'Сделано в Туле' },
+            { icon: '✦', text: 'Сделано в Туле' },
             { icon: '✦', text: 'Ограниченные тиражи' },
-            { icon: '🤝', text: 'Продажа через ВК и Telegram' },
-            { icon: '📦', text: 'Доставка по России' },
+            { icon: '✦', text: 'Продажа через ВК и Telegram' },
+            { icon: '✦', text: 'Доставка по России' },
           ].map(({ icon, text }) => (
             <div key={text} className={s.featBarItem}>
               <span className={s.featBarIcon}>{icon}</span>
@@ -111,7 +111,7 @@ export default function HomePage() {
       <div className={s.manifesto}>
         <div className="container">
           <p className={s.manifestoText}>
-            Не просто одежда — это <span className={s.manifestoAccent}>позиция.</span><br />
+            Не просто одежда — это позиция.<br />
             Тульская история. Молодёжный взгляд.
           </p>
         </div>
@@ -171,7 +171,7 @@ export default function HomePage() {
       </section>
 
       {/* ── How to buy ────────────────────────────────────────────────── */}
-      <section className={s.howTo}>
+      <section className={s.howTo} id="contacts">
         <div className="container">
           <div className={s.sectionHead}>
             <div>

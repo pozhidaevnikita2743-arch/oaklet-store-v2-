@@ -130,10 +130,6 @@
 /* Mobile burger */
 .burger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  width: 24px;
-  padding: 4px 0;
 }
 .burgerLine {
   height: 1.5px;

@@ -9,6 +9,7 @@ import s from './Header.module.css'
 const NAV = [
   { href: '/catalog', label: 'Каталог' },
   { href: '/about', label: 'О бренде' },
+  { href: '/#contacts', label: 'Контакты' },
 ]
 
 function IconCart({ size = 20 }: { size?: number }) {
